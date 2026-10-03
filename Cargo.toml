@@ -1,0 +1,38 @@
+[package]
+name = "trofeo-lcd-winmon"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+description = "Second-monitor bridge for the Thermalright Trofeo Vision 11.3\" USB LCD (0416:5408)."
+license = "GPL-3.0-or-later"
+repository = "https://github.com/ronaldslc/trofeo-lcd-winmon"
+publish = false
+
+[[bin]]
+name = "trofeo-lcd-winmon"
+path = "src/main.rs"
+
+[dependencies]
+# Windows Graphics Capture (per-monitor, cursor included). 2.x targets the `windows` 0.62 crate.
+windows-capture = "2.0.1"
+# WinUSB access. `vendored` builds libusb from source so no prebuilt DLL is required.
+rusb = { version = "0.9", features = ["vendored"] }
+# Pure-Rust baseline JPEG encoder (RGB input).
+jpeg-encoder = "0.6"
+anyhow = "1"
+thiserror = "2"
+
+[target.'cfg(windows)'.dependencies]
+# Used only for --hide-console (ShowWindow/GetConsoleWindow). Same version as windows-capture.
+windows = { version = "0.62", features = [
+    "Win32_Foundation",
+    "Win32_System_Console",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

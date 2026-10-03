@@ -1,0 +1,31 @@
+# NOTICE
+
+**trofeo-lcd-winmon** — a second-monitor bridge for the Thermalright Trofeo Vision
+11.3" USB LCD (`USB 0416:5408`).
+
+Copyright (C) 2026 Ronald Chan and contributors.
+
+This program is free software: you can redistribute it and/or modify it under the terms of
+the **GNU General Public License, version 3 or later** (see [`LICENSE`](./LICENSE)).
+
+## Protocol provenance
+
+The "LY" / TrofeoBulk USB protocol implemented in this project was reverse-engineered by
+others. This project contains an independent implementation — it does not copy code from
+the projects below — but its understanding of the wire format derives from them, and they
+are all GPL-licensed:
+
+| Project | Role | License |
+|---|---|---|
+| [Lexonight1/thermalright-trcc-linux](https://github.com/Lexonight1/thermalright-trcc-linux) | original protocol reverse engineering | GPL |
+| [sukualam/trofeo-lcd](https://github.com/sukualam/trofeo-lcd) | Rust driver port | GPL |
+| [haven80/trofeo-lcd-rs](https://github.com/haven80/trofeo-lcd-rs) | Rust driver + second-monitor approach | GPL-3.0-or-later |
+| [habibrehmansg/infopanel](https://github.com/habibrehmansg/infopanel) and [emaspa/infopanel-1](https://github.com/emaspa/infopanel-1) | Thermalright panel support + protocol notes | GPLv3 |
+
+For that reason this project is distributed under the GNU GPL v3.0-or-later. See
+`docs/RESEARCH.md` and `docs/PROTOCOL.md` for the full reference list.
+
+## Trademarks
+
+Thermalright and Trofeo Vision are trademarks of their respective owners. This project is
+not affiliated with, sponsored by, or endorsed by Thermalright.
